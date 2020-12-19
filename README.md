@@ -2,9 +2,13 @@
 
 ![nvim-blamer-lua](nvim-blamer-lua.png)
 
+## REQUIREMENTS
+
+Terminal with nerdfonts
+
 ## usage
 
-just install the plugin and it should works automatically.
+Install the plugin and it should work automatically. Minimal Config Required
 
 for example, use [vim-plug](https://github.com/junegunn/vim-plug)
 
