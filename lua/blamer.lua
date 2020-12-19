@@ -28,7 +28,7 @@ function M.blameVirtText()
     text = vim.fn.system(cmd)
     text = vim.split(text, '\n')[1]
     if text:find("fatal") then -- if the call to git show fails
-      text = '  Not Committed Yet'
+      text = ''
     end
   end
   api.nvim_buf_set_virtual_text(0, 2, line[1] - 1, {{ text,'GitLens' }}, {}) -- set virtual text for namespace 2 with the content from git and assign it to the higlight group 'GitLens'
