@@ -1,4 +1,3 @@
--- in blamer.lua
 local M = {}
 local api = vim.api
 
@@ -26,12 +25,14 @@ function M.blameVirtText()
     if hash == '00000000' then
     -- TODO: Make this option configurable
     -- text = '  Not Committed Yet'
-    else
-        text = vim.fn.system(cmd)
-        text = vim.split(text, '\n')[1]
-        if text:find("fatal") then -- if the call to git show fails
-            text = 'err: ' .. text
-        end
+        return
+    end
+    text = vim.fn.system(cmd)
+    text = vim.split(text, '\n')[1]
+    -- TODO: Make this option configurable too, not nice to see fail messages when not in git
+    if text:find("fatal") then -- if the call to git show fails
+        -- text = 'err: ' .. text
+        return
     end
     api.nvim_buf_set_virtual_text(0, 2, line[1] - 1, { { text, 'GitLens' } }, {}) -- set virtual text for namespace 2 with the content from git and assign it to the higlight group 'GitLens'
 end
